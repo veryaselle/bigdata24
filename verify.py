@@ -31,6 +31,6 @@ def process_directory(directory):
                     print(f"Error processing {parquet_path}")
 
 if __name__ == "__main__":
-    root_directory = '/home/user/big/spark-warehouse'
+    root_directory = '/path/to/spark-warehouse'
     process_directory(root_directory)
     print("CRC regeneration complete.")
