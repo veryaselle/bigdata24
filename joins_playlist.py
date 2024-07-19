@@ -11,21 +11,23 @@ def load_and_join_playlist(root_directory, subdir_track_playlist, subdir_playlis
     # Helper function to load and sample data
     def load_sample_data(path, desc):
         files = [os.path.join(path, f) for f in os.listdir(path) if f.endswith('.parquet')]
-        sampled_files = np.random.choice(files, int(len(files) * sample_fraction), replace=False)  # Sample files without replacement
+        sampled_files = np.random.choice(files, int(len(files) * sample_fraction), replace=False)  # Sample files withou$
         data = pd.concat([pd.read_parquet(f) for f in tqdm(sampled_files, desc=f'Reading {desc}')], ignore_index=True)
         return data
     
-    # Load and sample data from each directory
-    data_track_playlist = load_sample_data(path_track_playlist, 'track_playlist')
+    # Load and sample data from each directory: fixed to 1) playlist, then track_playlist
     data_playlist = load_sample_data(path_playlist, 'playlist')
+    data_track_playlist = load_sample_data(path_track_playlist, 'track_playlist')
+
     
     # Perform the inner join on 'playlist_id' and 'id'
-    joined_data = pd.merge(data_track_playlist, data_playlist, left_on='playlist_id', right_on='id', how='inner')
+    joined_data = pd.merge(data_playlist, data_track_playlist, left_on='id', right_on='playlist_id', how='inner')
 
     # Save the resulting dataframe
     joined_data.to_csv(output_file, index=False)
     
     return joined_data
+
 
 # Usage
 root_directory = '/path/to/spark-warehouse'
