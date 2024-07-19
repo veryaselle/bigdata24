@@ -22,19 +22,20 @@ def create_triples(csv_path, relationships):
 
 # Relationships definition
 relationships = [
-    ("album_id", "has_artist", "artist_id"),
-    ("album_id", "has_track", "track_id"),
-    ("album_id", "is_in", "playlist_id"),
-    ("artist_id", "has_album", "album_id"),
-    ("artist_id", "has_track", "track_id"),
-    ("artist_id", "is_in", "playlist_id"),
-    ("track_id", "comes_from", "album_id"),
-    ("track_id", "comes_from", "artist_id"),
-    ("track_id", "is_in", "playlist_id"),
-    ("playlist_id", "has_album", "album_id"),
-    ("playlist_id", "has_artist", "artist_id"),
-    ("playlist_id", "has_track", "track_id")
+    ("album_id", "album_has_artist", "artist_id"),
+    ("album_id", "album_has_track", "track_id"),
+    ("album_id", "album_is_in", "playlist_id"),
+    ("artist_id", "artist_has_album", "album_id"),
+    ("artist_id", "artist_has_track", "track_id"),
+    ("artist_id", "artist_is_in", "playlist_id"),
+    ("track_id", "track_comes_from", "album_id"),
+    ("track_id", "track_comes_from", "artist_id"),
+    ("track_id", "track_is_in", "playlist_id"),
+    ("playlist_id", "playlist_has_album", "album_id"),
+    ("playlist_id", "playlist_has_artist", "artist_id"),
+    ("playlist_id", "playlist_has_track", "track_id")
 ]
+
 
 # Define the path to your CSV
 csv_path = '/path/to/dump.csv'
