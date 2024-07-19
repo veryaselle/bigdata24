@@ -19,7 +19,8 @@ Order of python scripts (python3.9)
 4. joins_track.py
 5. dump.py
 
-   15% of total data: 471569 in dump.csv
+   15% of total data: 471569 in dump.csv / after fix: 570419 dump.csv
+
 6. triples_create.py
 7. training_pykeen.py
 
