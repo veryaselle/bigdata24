@@ -39,7 +39,7 @@ def find_crc_files(directory_path):
     return crc_files
 
 # Define the root directory and subdirectories to be checked
-root_directory = '/home/user/big/spark-warehouse'
+root_directory = '/path/to/spark-warehouse'
 subdirectories = ['artist', 'playlist', 'track', 'track_artist1', 'track_playlist1']
 
 # Collect all CRC file paths from all specified directories
