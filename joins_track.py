@@ -17,15 +17,15 @@ def load_and_join(root_directory, subdir_track_playlist, subdir_track_artist, su
         return data
     
     # Load and sample data from each directory
+    data_track = load_sample_data(path_track, 'track')
     data_track_playlist = load_sample_data(path_track_playlist, 'track_playlist')
     data_track_artist = load_sample_data(path_track_artist, 'track_artist')
-    data_track = load_sample_data(path_track, 'track')
     
-    # Perform the first inner join on 'track_id'
-    joined_data = pd.merge(data_track_playlist, data_track_artist, on='track_id', how='inner')
+    # Perform the first inner join on 'id'
+    joined_data = pd.merge(data_track, data_track_playlist, left_on='id', right_on='track_id', how='inner')
 
-    # Perform the second inner join with the 'track' DataFrame
-    final_joined_data = pd.merge(joined_data, data_track, left_on='track_id', right_on='id', how='inner')
+    # Perform the second inner join with the 'track_id' DataFrame
+    final_joined_data = pd.merge(joined_data, data_track_artist, on='track_id', how='inner')
 
     # Save the resulting dataframe
     final_joined_data.to_csv(output_file, index=False)
@@ -34,11 +34,10 @@ def load_and_join(root_directory, subdir_track_playlist, subdir_track_artist, su
 
 # Usage
 root_directory = '/path/to/spark-warehouse'
-output_file = '/path/to/final_join_output.csv'
+output_file = 'final_join_output.csv'
 result = load_and_join(root_directory, 'track_playlist1', 'track_artist1', 'track', output_file)
 
 if result is not None and not result.empty:
     print(result.head())
 else:
     print("No data returned from join operations.")
-
