@@ -70,5 +70,27 @@ def train_multiple_models(subsets, base_model_config, training_config, optimizer
     return models
 
 if __name__ == '__main__':
-    base_path = '/path/to/directory'
+    base_path = '/path/to/directory/'
+    csv_path = os.path.join(base_path, 'unique_triples.csv')
+    save_path = os.path.join(base_path, 'trained_models2')
+    os.makedirs(save_path, exist_ok=True)  # Ensure save directory exists
+
+    n_samples = 10  # Number of different model sizes and random subsets
+
+    base_model_config = {
+        'model_name': 'TransE',
+        'model_kwargs': {'embedding_dim': 200},  # Base embedding dimension
+    }
+
+    training_config = {
+        'training_loop': 'slcwa',
+        'training_kwargs': {'num_epochs': 100, 'batch_size': 128},
+    }
+
+    optimizer_config = {'lr': 0.001}
+
+    # Load and sample the dataset
+    subsets = load_and_sample_dataset(csv_path, n_samples)
+    models = train_multiple_models(subsets, base_model_config, training_config, optimizer_config, save_path)
+
 
