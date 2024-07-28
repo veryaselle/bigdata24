@@ -19,10 +19,13 @@ Order of python scripts (python3.9)
 4. joins_track.py
 5. dump.py
 
-   15% of total data: 471569 in dump.csv / after fix: 570419 dump.csv
+   15% of total data: 471569 in dump.csv / after fix: 570419 dump.csv / update 28.07.24: 56357 unique_triples.csv 10% of all data (after many attempts increasing percetange was not possible, lack of RAM)
+
 
 6. triples_create.py
-7. training_pykeen.py
+7. unique_triples.py
+8. training_pykeen.py
+9. training_models.py
 
 
 
