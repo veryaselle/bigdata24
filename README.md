@@ -25,7 +25,7 @@ Order of python scripts (python3.9)
 6. triples_create.py
 7. unique_triples.py
 
-56357 unique_triples.csv 10% of all data 
+   56357 unique_triples.csv 10% of all data 
 8. training_pykeen.py
 9. training_models.py
 
