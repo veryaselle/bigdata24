@@ -44,12 +44,12 @@ def run_pykeen_pipeline(dataset, save_path, model_config, training_config, optim
     return result
 
 if __name__ == '__main__':
-    csv_path = '/path/to/triples.csv'
+    csv_path = '/path/to/unique_triples.csv'
     save_path = '/path/to/trained_model'
 
     model_config = {
         'model_name': 'TransE',
-        'model_kwargs': {'embedding_dim': 50},
+        'model_kwargs': {'embedding_dim': 200},
     }
 
     training_config = {
@@ -57,14 +57,14 @@ if __name__ == '__main__':
         'training_kwargs': {'num_epochs': 100, 'batch_size': 128},
     }
 
-    optimizer_config = {'lr': 0.01}
+    optimizer_config = {'lr': 0.001}
 
     try:
         triples_factory = load_custom_dataset(csv_path)
         custom_dataset = CustomDataset(triples_factory)
     except Exception as e:
         print(f"An error occurred while loading the dataset: {e}")
-        exit(1)
+    #    exit(1)
 
-    result = run_pykeen_pipeline(custom_dataset, save_path, model_config, training_config, optimizer_config)
+    # result = run_pykeen_pipeline(custom_dataset, save_path, model_config, training_config, optimizer_config)
 
