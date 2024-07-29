@@ -28,6 +28,7 @@ Order of python scripts (python3.9)
    56357 unique_triples.csv 10% of all data 
 8. training_pykeen.py
 9. training_models.py
+10. metrics_file.py
 
 
 
